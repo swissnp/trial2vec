@@ -3,3 +3,7 @@ clinical_trials_chroma
 experiments_records
 trial_search
 all_studies.json
+*.csv
+*.json
+*.jsonl
+
