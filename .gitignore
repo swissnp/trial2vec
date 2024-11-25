@@ -7,3 +7,5 @@ all_studies.json
 *.json
 *.jsonl
 
+*.pkl
+__pycache__/
