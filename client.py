@@ -7,7 +7,7 @@ class Client:
         self.embed_model = embed_model
         self.collection = collection
         
-  def retrieve_relevant_studies(self, query, existing_study: str, n_results=5):
+  def retrieve_relevant_studies(self, query, existing_study: str, n_results=3, distance_threshold=65):
       query_embedding = self.embed_model.encode(query).tolist()
       
       results = self.collection.query(
@@ -17,7 +17,7 @@ class Client:
       
       filtered_results = []
       for id, distance, document in zip(results['ids'][0], results['distances'][0], results['documents'][0]):
-          if id != existing_study:
+          if id != existing_study and distance < distance_threshold:
               filtered_results.append({
                   "id": id,
                   "distance": distance,
@@ -26,5 +26,6 @@ class Client:
           
           if len(filtered_results) == n_results:
               break
-      
+    
+      print(len(filtered_results))
       return filtered_results

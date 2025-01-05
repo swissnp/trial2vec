@@ -9,3 +9,4 @@ all_studies.json
 
 *.pkl
 __pycache__/
+*.pk
