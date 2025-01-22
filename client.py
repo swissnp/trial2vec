@@ -7,7 +7,7 @@ class Client:
         self.embed_model = embed_model
         self.collection = collection
         
-  def retrieve_relevant_studies(self, query, existing_study: str, n_results=5):
+  def retrieve_relevant_studies(self, query, existing_study: str, n_results=3):
       query_embedding = self.embed_model.encode(query).tolist()
       
       results = self.collection.query(
@@ -28,3 +28,4 @@ class Client:
               break
       
       return filtered_results
+  
